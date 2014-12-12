@@ -1,0 +1,12 @@
+Package: substitute
+Title: Substitute
+Date: 2014-12-12
+Version: 0.1
+Authors@R: c(person("Alexander", "Gitovich", role = c("aut", "cre"), email = "a.gitovich@gmail.com"))
+Imports:
+	evaluate,
+	RJDBC
+Author: Alexander Gitovich 
+Description: Substitutes R variables in queries to RJDBC
+Depends: R (>= 3.1.0)
+LazyData: true
