@@ -7,7 +7,7 @@ require("RJDBC")
 #! @param x text to be substituted
 #! @keywords substitute 
  
-substitute <- function(x) {
+substitute <- function (x) {
   m <- regexpr("`.*`", x)
   handler <- new_output_handler(value = function(x) {
     sprintf("%s", x)
@@ -26,6 +26,10 @@ substitute <- function(x) {
 #! @param con RJDBC connection
 #! @param file Sql file
 
-execute <- function(con, file) {
-  dbGetQuery(con, paste(substitute(readLines(file)), collapse = " "))
+execute <- function(con, file, has.result = T) {
+  f <- dbGetQuery
+  if (has.result) {
+    f <- dbSendUpdate
+  }
+  f(con, paste(substitute(readLines(file)), collapse = " "))
 }
