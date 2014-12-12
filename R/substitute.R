@@ -28,7 +28,7 @@ substitute <- function (x) {
 
 execute <- function(con, file, has.result = T) {
   f <- dbGetQuery
-  if (has.result) {
+  if (!has.result) {
     f <- dbSendUpdate
   }
   f(con, paste(substitute(readLines(file)), collapse = " "))
